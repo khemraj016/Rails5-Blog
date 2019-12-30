@@ -1,0 +1,71 @@
+<style>
+	.post-form{
+        display: flex;
+        width: 50%;
+        flex-direction: column;
+        margin: 20px auto;
+    }
+    .form-group{
+        display: flex;
+        justify-content: space-between;
+        margin: 5px 0px;
+        align-items: center;
+    }
+
+    input[type="submit"]{
+      background-color: #333333;
+      border: none;
+      color: white;
+      padding: 10px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+</style>
+<div class="wrapper">
+  <div class="posts" id="post_section">
+    <div class="post-card">
+    	<% if current_user.present? && @post.user_id.eql?(current_user.id) %>
+	    	<%= button_to 'Edit Post', edit_post_path(@post), class: 'btn btn-success', method: :get %>
+	    <% end %>
+    	<div class="title">
+      	<h2><%= @post.title %></h2>
+      </div>
+      <img class="image" src="<%= @post.image %>">
+      <div class="body-trunc">
+        <p><%= @post.body %></p>
+      </div>
+      <div class="title">
+      	<p>Author: <%= @post.user.name %></p>
+      </div>
+    </div>
+  </div>
+  <div class="title">
+  	<% if @comments.present? %>
+	  	<h2> All Comments </h2>
+	  	<% @comments.each do |comment| %>
+	    	<p><b><%= comment.user.name %> <%= comment.created_at.to_s(:db) %></b></p>
+	    	<p><%= comment.body %></p>
+	  	<% end %>
+	  <% else %>
+	  	<p> No comments are found </p>
+	  	<p> Become a First person to add comment on post </p>
+	  <% end %>
+	</div>
+
+	<% if current_user.present? %>
+	  <form method="POST" action="/comments" enctype="multipart/form-data" class="post-form">
+	    <%= token_tag %>
+	    <div class="form-group">
+	      <label for="body">Comment</label>
+	      <textarea name="body" class="form-control" cols="30" rows="10"></textarea>
+	    </div>
+	    <input type="hidden" id="post_id" name="post_id" value=<%= @post.id %>>
+	    <div class="from-group">
+	      <div><input type="submit" value="Add Comment"></div>
+	    </div>
+	 </form>
+ <% end %>
+
+</div>

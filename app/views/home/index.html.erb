@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class="title">
+  	<h1>Blog</h1>
+  	<p>Start and create your own blog.</p>
+  	<%= button_to 'Create new Blog', new_post_path, class: 'btn btn-success', method: :get %>
+   </div>
+
+  <div class="posts" id="post_section">
+    <% @posts.each do |post| %>
+	    <div class="post-card">
+	    	<% if current_user.present? && post.user_id.eql?(current_user.id) %>
+	    		<%= button_to 'Edit Post', edit_post_path(post), class: 'btn btn-success', method: :get %>
+	    	<% end %>
+	    	<div class="title">
+	      	<h2><%= post.title %></h2>
+	      </div>
+	      <a href="/posts/<%=post.id %>">
+  				<img class="image" src="<%= post.image %>"/>
+  				<p><b> Add or Show comments </b></p>
+				</a>
+	      <div class="body-trunc">
+	        <p><%= post.body %></p>
+	      </div>
+	      <div class="title">
+	      	<p>Author: <%= post.user.name %></p>
+	      </div>
+	    </div>
+    <% end %>
+  </div>
+</div>

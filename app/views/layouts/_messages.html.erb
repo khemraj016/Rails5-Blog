@@ -1,0 +1,22 @@
+<% if notice %>
+	<div class='alert alert-success alert-dismissible' id="login-alert">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<p class="alert" style="color:green;font-size:12px;padding:0; text-align: center"><%= notice %></p>
+	</div>
+<% end %>
+
+<% if alert %>
+	<div class='alert alert-danger alert-dismissible' id="login-alert">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<p class="alert" style="color:red;font-size:12px;padding:0; text-align: center"><%= alert %></p>
+	</div>
+<% end %>
+
+
+<script type="text/javascript">
+	$(document).ready (function(){
+    $("#login-alert").fadeTo(3000, 500).slideUp(500, function(){
+      $("#login-alert").slideUp(500);
+    });   
+  });
+</script>

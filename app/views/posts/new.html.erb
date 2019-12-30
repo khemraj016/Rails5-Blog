@@ -1,0 +1,30 @@
+<div class="title">
+  <h1>Live Blog</h1>
+  <p>Editor View</p>
+</div>
+
+<div style="text-align:center">
+  <p><strong>Fill and submit the form below to create a new post</strong></p>
+
+	<%= form_for @post, :html => {:multipart => true} do |f| %>
+	  <p>
+	    <%= f.label :title %><br />
+	    <%= f.text_field :title %>
+	  </p>
+	  <div style="width: 400%;margin-left: 45%;margin-right: 30%;">
+		  <p>
+		  	<%= f.label :image %><br />
+		    <%= f.file_field :image %>
+		  </p>
+		</div>
+	  <p>
+	    <%= f.label :content %><br />
+	    <%= f.text_field :body %>
+	  </p>
+	  <p>
+	  	<%= f.hidden_field :user_id, value: current_user.id %>
+	  </p>
+	  <p><%= f.submit %></p>
+	<% end %>
+
+</div>
