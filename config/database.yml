@@ -20,5 +20,6 @@ test: &test
   database: blog_test
 
 production: &production
-  <<: *DEFAULT
-  url: <%= ENV['DATABASE_URL'] %>
+  adapter: mysql2
+  username: "be8edeadb9d89b"
+  password: "fa23326e"
