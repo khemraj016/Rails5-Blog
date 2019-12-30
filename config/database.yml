@@ -20,6 +20,4 @@ test: &test
   database: blog_test
 
 production: &production
-  adapter: mysql2
-  username: "be8edeadb9d89b"
-  password: "fa23326e"
+  url: 'mysql2://be8edeadb9d89b:fa23326e@us-cdbr-iron-east-05.cleardb.net/heroku_45aacccaef9cf49?reconnect=true'
