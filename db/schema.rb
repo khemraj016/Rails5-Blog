@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_12_30_051006) do
 
-  create_table "comments", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.text "body"
     t.integer "post_id"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_12_30_051006) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.integer "user_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_12_30_051006) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

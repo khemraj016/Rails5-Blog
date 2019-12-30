@@ -39,6 +39,7 @@ gem 'devise'
 gem 'awesome_print'
 gem "carrierwave"
 gem "rmagick"
+gem 'mysql2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -58,8 +59,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bullet'
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
 end
 
 group :test do
@@ -75,9 +74,6 @@ group :test do
   gem 'database_cleaner', '~> 1.5'
 end
 
-group :production do
-  gem 'pg'
-end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
