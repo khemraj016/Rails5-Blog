@@ -20,4 +20,5 @@ test: &test
   database: blog_test
 
 production: &production
+  <<: *DEFAULT
   url: <%= ENV['DATABASE_URL'] %>
